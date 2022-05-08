@@ -1,0 +1,7 @@
+:root {
+  --primary-color: lightblue;
+}
+
+body {
+  background-color: var(--primary-color);
+}

@@ -10,7 +10,8 @@ let pokemonRespository = (function () {
   }
 
   function add(pokemon) {
-    if (typeof pokemon === 'object') {
+    if (typeof pokemon === 'object' 
+    && Object.keys(pokemon)[0]=='name' && Object.keys(pokemon)[1] == 'height' && Object.keys(pokemon[2] == 'types')) {
       return pokemonList.push(pokemon);
     }
   }

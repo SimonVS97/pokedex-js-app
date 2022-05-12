@@ -16,9 +16,14 @@ let pokemonRespository = (function () {
     }
   }
 
+  function filterPokemon(pokemonName) {
+    return pokemonList.filter(pokemon => pokemon.name === pokemonName);
+  }
+
   return {
     getAll: getAll,
-    add: add
+    add: add,
+    filterPokemon: filterPokemon
   };
 
 })();

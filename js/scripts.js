@@ -36,10 +36,15 @@ let pokemonRespository = (function () {
   
     button.innerHTML = ''+pokemon.name;
     button.classList.add('buttonStyle');
+    button.addEventListener('click', showDetails(pokemon));
   
     listItem.appendChild(button);
   
     pokemonList.appendChild(listItem);
+  }
+
+  function showDetails(pokemon) {
+    console.log(pokemon.name);
   }
 
   return {

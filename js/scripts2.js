@@ -5,13 +5,10 @@ let pokemonRespository = (function () {
                     {name:'Ivysaur', height: 1, types:['grass', 'poison']},
                     {name: 'Venusaur', height: 2, types: ['grass', 'poison']}
   ];
-  // method to return arrary pokemonList
   function getAll() {
     return pokemonList;
   }
 
-  // method to add a pokemon to pokemonList
-  // check if keys are correct
   function add(pokemon) {
     if (typeof pokemon === 'object' 
     && Object.keys(pokemon)[0]=='name' && Object.keys(pokemon)[1] == 'height' && Object.keys(pokemon[2] == 'types')) {
@@ -19,16 +16,10 @@ let pokemonRespository = (function () {
     }
   }
 
-  // method to filter pokemon out of pokemonList with matching name
   function filterPokemon(pokemonName) {
     return pokemonList.filter(pokemon => pokemon.name === pokemonName);
   }
 
-  // method to add a pokemon as a list item
-  // create the listItem, create the cutton
-  // fill the button with the parameter name
-  // append button to list item
-  // append listitem to pokemon list
   function addListItem(pokemon) {
     let pokemonList = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
@@ -52,12 +43,21 @@ let pokemonRespository = (function () {
 })();
 
 // Retrieve array from IIFE
-// iterate over the array of objects
-// adding each object as a list item
+// iterate over the list of objects
+// checking for the height of a specific object
+// writing name and height onto the doc
 pokemonRespository.getAll().forEach(function(pokemon) {
 
   pokemonRespository.addListItem(pokemon);
 
+
+  if(pokemon.height >= 5) {
+    document.write(pokemon.name + ' (height: ' + pokemon.height + ')' + ' - Wow, that\'s big!');
+    document.write('<br>');
+  } else {
+    document.write(pokemon.name + ' (height: ' + pokemon.height + ')');
+    document.write('<br>')
+  }
 });
 
 

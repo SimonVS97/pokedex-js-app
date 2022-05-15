@@ -36,7 +36,9 @@ let pokemonRespository = (function () {
   
     button.innerHTML = ''+pokemon.name;
     button.classList.add('buttonStyle');
-    button.addEventListener('click', showDetails);
+    button.addEventListener('click', function() {
+      showDetails(pokemon);
+    });
   
     listItem.appendChild(button);
   

@@ -1,8 +1,10 @@
 // IIFE to wrap array
 
 let pokemonRespository = (function () {
-  let pokemonList = [];
-  let apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  let pokemonList = [{name:'Bulbasaur', height: 7, types:['grass', 'poison']},
+                    {name:'Ivysaur', height: 1, types:['grass', 'poison']},
+                    {name: 'Venusaur', height: 2, types: ['grass', 'poison']}
+  ];
   // method to return arrary pokemonList
   function getAll() {
     return pokemonList;
@@ -11,12 +13,8 @@ let pokemonRespository = (function () {
   // method to add a pokemon to pokemonList
   // check if keys are correct
   function add(pokemon) {
-    if (
-      typeof pokemon === 'object' &&
-      "name" in pokemon && 
-      "height" in pokemon && 
-      "types" in pokemon
-      ) {
+    if (typeof pokemon === 'object' 
+    && Object.keys(pokemon)[0]=='name' && Object.keys(pokemon)[1] == 'height' && Object.keys(pokemon[2] == 'types')) {
       return pokemonList.push(pokemon);
     }
   }
@@ -45,28 +43,6 @@ let pokemonRespository = (function () {
     listItem.appendChild(button);
   
     pokemonList.appendChild(listItem);
-  }
-
-  // fetch creates a promise to load the data
-  // after this promise is resolved, the data is part of the response object
-  // response.json method returns a promise that parses body of response into JSON
-  // once that is resolved, we acces the results array inside the json
-  // we iterate over that array and create a pokemon object
-  // then we call the add function to add that into our pokemon list
-  function loadList() {
-    return fetch(apiUrl).then(function (response) {
-      return response.json();
-    }).then(function (json) {
-      json.results.forEach(function (item) {
-        let pokemon = {
-          name: item.name,
-          detailsUrl: item.url
-        };
-        add(pokemon);
-      });
-    }).catch(function (e) {
-      console.error(e);
-    })
   }
 
   function showDetails(pokemon) {

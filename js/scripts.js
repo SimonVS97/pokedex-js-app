@@ -47,6 +47,14 @@ let pokemonRespository = (function () {
     pokemonList.appendChild(listItem);
   }
 
+  function loadDetails(pokemon) {
+    return fetch(pokemon.detailsUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      pokemon.height = json.height;
+    })
+  }
+
   // fetch creates a promise to load the data
   // after this promise is resolved, the data is part of the response object
   // response.json method returns a promise that parses body of response into JSON
@@ -54,7 +62,7 @@ let pokemonRespository = (function () {
   // we iterate over that array and create a pokemon object
   // then we call the add function to add that into our pokemon list
   function loadList() {
-    return fetch(apiUrl).then(function (response) {
+    return fetch(apiURL).then(function (response) {
       return response.json();
     }).then(function (json) {
       json.results.forEach(function (item) {
@@ -77,19 +85,22 @@ let pokemonRespository = (function () {
     getAll: getAll,
     add: add,
     filterPokemon: filterPokemon,
-    addListItem: addListItem
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails
   };
 
 })();
 
-// Retrieve array from IIFE
-// iterate over the array of objects
-// adding each object as a list item
-pokemonRespository.getAll().forEach(function(pokemon) {
 
-  pokemonRespository.addListItem(pokemon);
-
+pokemonRespository.loadList().then(function() {
+  // Now the data is loaded!
+  pokemonRespository.getAll().forEach(function(pokemon){
+    pokemonRespository.addListItem(pokemon);
+  });
 });
+
+
 
 
 

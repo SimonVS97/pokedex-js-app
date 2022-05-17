@@ -13,7 +13,7 @@ let pokemonRespository = (function () {
   function add(pokemon) {
     if (
       typeof pokemon === 'object' &&
-      "name" in pokemon
+      "name" in pokemon 
       ) {
       return pokemonList.push(pokemon);
     }
@@ -58,7 +58,6 @@ let pokemonRespository = (function () {
     });
   }
 
-
   // fetch creates a promise to load the data
   // after this promise is resolved, the data is part of the response object
   // response.json method returns a promise that parses body of response into JSON
@@ -97,7 +96,6 @@ let pokemonRespository = (function () {
   };
 
 })();
-
 
 pokemonRespository.loadList().then(function() {
   // Now the data is loaded!

@@ -13,9 +13,7 @@ let pokemonRespository = (function () {
   function add(pokemon) {
     if (
       typeof pokemon === 'object' &&
-      "name" in pokemon && 
-      "height" in pokemon && 
-      "types" in pokemon
+      "name" in pokemon
       ) {
       return pokemonList.push(pokemon);
     }
@@ -48,12 +46,18 @@ let pokemonRespository = (function () {
   }
 
   function loadDetails(pokemon) {
-    return fetch(pokemon.detailsUrl).then(function (response) {
+    let url = pokemon.detailsURL;
+    return fetch(url).then(function (response) {
       return response.json();
-    }).then(function (json) {
-      pokemon.height = json.height;
-    })
+    }).then(function (details) {
+      pokemon.imageURL = details.sprites.front_default;
+      pokemon.height = details.height;
+      pokemon.types = details.types;
+    }).catch(function (e) {
+      console.log(e);
+    });
   }
+
 
   // fetch creates a promise to load the data
   // after this promise is resolved, the data is part of the response object
@@ -68,7 +72,7 @@ let pokemonRespository = (function () {
       json.results.forEach(function (item) {
         let pokemon = {
           name: item.name,
-          detailsUrl: item.url
+          detailsURL: item.url
         };
         add(pokemon);
       });
@@ -78,7 +82,9 @@ let pokemonRespository = (function () {
   }
 
   function showDetails(pokemon) {
-    console.log(pokemon.name);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
   }
 
   return {

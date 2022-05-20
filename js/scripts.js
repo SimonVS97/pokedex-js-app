@@ -100,8 +100,7 @@ let pokemonRespository = (function () {
     let closeButton = document.createElement('button');
     closeButton.classList.add('modal-close');
     closeButton.innerHTML = 'Close';
-
-    console.log(pokemon.height);
+    closeButton.addEventListener('click', hideModal);
 
     let pokemonHeight = document.createElement('div');
     pokemonHeight.innerText = pokemon.height;
@@ -113,7 +112,10 @@ let pokemonRespository = (function () {
     modalContainer.classList.add('is-visible');
   }
 
-
+  function hideModal() {
+    let modalContainer = document.querySelector('#modal-container');
+    modalContainer.classList.remove('is-visible');
+  }
 
   // method to filter pokemon out of pokemonList with matching name
   function filterPokemon(pokemonName) {

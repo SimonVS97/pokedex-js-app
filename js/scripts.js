@@ -86,9 +86,11 @@ let pokemonRespository = (function () {
     });
   }
 
-  // 
+  let modalContainer = document.querySelector('#modal-container');
+
   function showModal(pokemon) {
-    let modalContainer = document.querySelector('#modal-container');
+
+
     modalContainer.classList.add('is-visible');
 
     // clear existing modal content
@@ -102,9 +104,17 @@ let pokemonRespository = (function () {
     closeButton.innerHTML = 'Close';
     closeButton.addEventListener('click', hideModal);
 
+    let pokemonName = document.createElement('h1');
+    pokemonName.innerText = pokemon.name;
+
+    pokemonImg = document.createElement('img');
+    pokemonImg.setAttribute('src', pokemon.imageURL);
+
     let pokemonHeight = document.createElement('div');
     pokemonHeight.innerText = pokemon.height;
 
+    modal.appendChild(pokemonName);
+    modal.appendChild(pokemonImg);
     modal.appendChild(pokemonHeight);
     modal.appendChild(closeButton);
     modalContainer.appendChild(modal);
@@ -112,15 +122,32 @@ let pokemonRespository = (function () {
     modalContainer.classList.add('is-visible');
   }
 
+  // close modal if the user clicks close
   function hideModal() {
-    let modalContainer = document.querySelector('#modal-container');
     modalContainer.classList.remove('is-visible');
   }
+
+  // close modal if the user hits Esc
+  window.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+      hideModal();  
+    }
+  });
+
 
   // method to filter pokemon out of pokemonList with matching name
   function filterPokemon(pokemonName) {
     return pokemonList.filter(pokemon => pokemon.name === pokemonName);
   }
+
+  modalContainer.addEventListener('click', (e) => {
+    // Since this is also triggered when clicking INSIDE the modal
+    // We only want to close if the user clicks directly on the overlay
+    let target = e.target;
+    if (target === modalContainer) {
+      hideModal();
+    }
+  });
 
   return {
     getAll: getAll,

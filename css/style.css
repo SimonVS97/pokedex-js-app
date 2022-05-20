@@ -10,6 +10,31 @@ body {
   background-color: var(--primary-color);
 }
 
+#modal-container {
+  display: none;
+
+}
+
+#modal-container.is-visible {
+  display: block;
+  
+  position: fixed;
+  padding: 20px;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+
+  z-index: 999;
+
+  overflow: auto;
+
+  display: grid;
+  text-align: center;
+}
+
 h1 {
   width: 10%;
   margin: 0 auto;

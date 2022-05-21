@@ -111,7 +111,7 @@ let pokemonRespository = (function () {
     pokemonImg.setAttribute('src', pokemon.imageURL);
 
     let pokemonHeight = document.createElement('div');
-    pokemonHeight.innerText = pokemon.height;
+    pokemonHeight.innerText = 'Height: '+pokemon.height;
 
     modal.appendChild(pokemonName);
     modal.appendChild(pokemonImg);

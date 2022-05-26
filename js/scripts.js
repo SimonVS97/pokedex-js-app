@@ -50,9 +50,11 @@ let pokemonRespository = (function () {
   function addListItem(pokemon) {
     let pokemonList = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
+    listItem.classList.add('list-group-item');
     let button =  document.createElement('button');
   
     button.innerHTML = ''+pokemon.name;
+    button.classList.add('buttonStyle');
     button.addEventListener('click', function() {
       showDetails(pokemon);
     });
@@ -73,7 +75,7 @@ let pokemonRespository = (function () {
   // showDetails calls loadDetails on click and passes the pokemon
   // showDetails adds to pokemon object
   function loadDetails(pokemon) {
-    let url = pokemon.url;
+    let url = pokemon.detailsURL;
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {

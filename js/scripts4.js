@@ -102,22 +102,32 @@ let pokemonRespository = (function () {
     modalBody.innerHTML = '';
     modalTitle.innerHTML = '';
 
-    let pokemonName = document.createElement('h1');
-    pokemonName.innerText = pokemon.name;
-
-
-    let pokemonHeight = document.createElement('p');
-    pokemonHeight.innerText = 'Height: '+pokemon.height;
-
-    let pokemonTypes = document.createElement('p');
-    pokemonTypes.innerText = 'types: '+pokemon.types;
+    
 
     let modal = document.createElement('div');
     modal.classList.add('modal');
 
-    modalTitle.appendChild(pokemonName);
-    modalBody.appendChild(pokemonHeight);
+    let closeButton = document.createElement('button');
+    closeButton.classList.add('modal-close');
+    closeButton.innerHTML = 'Close';
+    closeButton.addEventListener('click', hideModal);
 
+    let pokemonName = document.createElement('h1');
+    pokemonName.innerText = pokemon.name;
+
+    pokemonImg = document.createElement('img');
+    pokemonImg.setAttribute('src', pokemon.imageURL);
+
+    let pokemonHeight = document.createElement('div');
+    pokemonHeight.innerText = 'Height: '+pokemon.height;
+
+    modal.appendChild(pokemonName);
+    modal.appendChild(pokemonImg);
+    modal.appendChild(pokemonHeight);
+    modal.appendChild(closeButton);
+    modalContainer.appendChild(modal);
+
+    modalContainer.classList.add('is-visible');
   }
 
   // close modal if the user clicks close

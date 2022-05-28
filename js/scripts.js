@@ -25,7 +25,7 @@ const pokemonRepository = (function () {
     console.log(typeof pokemonName.target.value);
 
     console.log(pokemonList);
-    let pokemonListNew = pokemonList.filter(name => String(name).includes(letters));
+    let pokemonListNew = pokemonList.filter(pokemon => String(pokemon.name).includes(letters));
     console.log(pokemonListNew);
 
     let ul = document.querySelector('ul');
@@ -33,7 +33,7 @@ const pokemonRepository = (function () {
 
     pokemonListNew.forEach(function(pokemon) {
       addListItem(pokemon);
-    })
+    });
   }
 
 
@@ -49,7 +49,6 @@ const pokemonRepository = (function () {
       event.target.blur();
     });
     //Add classes & attributes to list item
-    button.classList.add('text-capitalize');
     button.classList.add('buttonStyle');
     button.setAttribute('data-toggle', 'modal');
     button.setAttribute('data-target', '.modal');

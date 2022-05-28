@@ -15,11 +15,33 @@ const pokemonRepository = (function () {
     }
   }
 
+  // update pokemonList with the input given
+  let nameInput = document.querySelector('input');
+  nameInput.addEventListener('input', updateList);
+
+  function updateList(pokemonName) {
+    let letters = pokemonName.target.value;
+    console.log(''+pokemonName.target.value);
+    console.log(typeof pokemonName.target.value);
+
+    console.log(pokemonList);
+    let pokemonListNew = pokemonList.filter(name => String(name).includes(letters));
+    console.log(pokemonListNew);
+
+    let ul = document.querySelector('ul');
+    ul.innerHTML = '';
+
+    pokemonListNew.forEach(function(pokemon) {
+      addListItem(pokemon);
+    })
+  }
+
+
   function addListItem(pokemon) {
     // select List & create list item
     let ul = document.querySelector('ul');
     let listItem = document.createElement('li');
-    listItem.classList.add('col-sm-8');
+    listItem.classList.add('col-lg-2','col-md-4', 'col-12');
     let button = document.createElement('button');
     button.innerText = pokemon.name;
     button.addEventListener('click', (event) => {
@@ -27,8 +49,8 @@ const pokemonRepository = (function () {
       event.target.blur();
     });
     //Add classes & attributes to list item
-    button.classList.add('btn', 'btn-block', 'btn-outline-primary');
-    button.classList.add('m-1', 'bg-blue', 'text-capitalize');
+    button.classList.add('text-capitalize');
+    button.classList.add('buttonStyle');
     button.setAttribute('data-toggle', 'modal');
     button.setAttribute('data-target', '.modal');
 
@@ -119,10 +141,7 @@ const pokemonRepository = (function () {
 
 // Create & display list of Pokemon
 pokemonRepository.loadList().then(() => {
-  pokemonRepository
-    .getAll()
-    .sort((a, b) => a.name > b.name)
-    .forEach((pokemon) => {
+  pokemonRepository.getAll().forEach((pokemon) => {
       pokemonRepository.addListItem(pokemon);
     });
 });

@@ -14,9 +14,18 @@ body {
   display: none;
 }
 
-ul {
+#pList {
+  list-style: none;
+  margin: 0;
   padding: 0;
-  margin-top: 50px;
+}
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
 }
 
 .modal {
@@ -54,18 +63,10 @@ ul {
   text-align: center;
 }
 
-ul {
-  list-style: none;
-  text-align: center;
-}
-
-li {
-  margin: 0 auto;
-}
-
 .buttonStyle {
   background-color: orange;
-  width: 250px;
-  height: 70px;
+  width: 130px;
+  height: 50px;
   margin-top: 10px;
 }
+

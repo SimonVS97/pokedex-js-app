@@ -11,4 +11,4 @@ Project is created with:
 * jQuery version 3.5.1
 
 ## Launch
-Just open this link: 
+Just open this link: https://simonvs97.github.io/pokedex-js-app/

@@ -1,8 +1,8 @@
-# pokedex-js-app
+# Pokedex App
 
 Simple pokedex app that displays information about different pokemon.
 
-## Technologies
+## Technologies/Depencies
 Project is created with:
 * HTML
 * CSS

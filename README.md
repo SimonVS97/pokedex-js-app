@@ -12,8 +12,8 @@ Project is created with:
 
 ## Dependencies
 * [pokeAppi](https://pokeapi.co/)
-* [promise-polyfill] (https://github.com/taylorhakes/promise-polyfill)
-* [fetch-polyfill] (https://github.com/github/fetch)
+* [promise-polyfill](https://github.com/taylorhakes/promise-polyfill)
+* [fetch-polyfill](https://github.com/github/fetch)
 
 ## Launch
 Just open this link: https://simonvs97.github.io/pokedex-js-app/

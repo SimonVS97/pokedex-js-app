@@ -11,9 +11,9 @@ Project is created with:
 * jQuery version 3.5.1
 
 ## Dependencies
-[pokeAppi](https://pokeapi.co/)
-[promise polyfill] (https://github.com/taylorhakes/promise-polyfill)
-[fetch polyfill] (https://github.com/github/fetch)
+* [pokeAppi](https://pokeapi.co/)
+* [promise-polyfill] (https://github.com/taylorhakes/promise-polyfill)
+* [fetch-polyfill] (https://github.com/github/fetch)
 
 ## Launch
 Just open this link: https://simonvs97.github.io/pokedex-js-app/

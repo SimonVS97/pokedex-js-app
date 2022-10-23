@@ -1,5 +1,6 @@
 # Pokedex App
 
+## Description
 Simple pokedex app that displays information about different pokemon.
 
 ## Technologies

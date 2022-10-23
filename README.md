@@ -22,7 +22,7 @@ Project is created with:
 * [promise-polyfill](https://github.com/taylorhakes/promise-polyfill)
 * [fetch-polyfill](https://github.com/github/fetch)
 
-## How to Use The App
+## How to use the app
 Just open this link: https://simonvs97.github.io/pokedex-js-app/
 
 ## Author

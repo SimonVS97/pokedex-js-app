@@ -1,7 +1,7 @@
 # Pokedex App
 
 ## Description
-Simple pokedex app that displays information about different pokemon.
+Simple pokedex app that pulls data from the pokeApi and displays information about different pokemon. 
 
 ## Screenshots
 
